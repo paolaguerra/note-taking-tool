@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.css";
 import lupa from "./img/lupa.png";
 import addnote from "./img/add-note.png";
@@ -6,23 +6,6 @@ import { ContNotes } from "./ContNotes";
 import PropTypes from "prop-types";
 
 export const LeftColumn = (props) => {
-  const [selectedOption, setSelectedOption] = useState("Add"); // add new note, note
-
-  const showNoteSelected = () => {
-    setSelectedOption("Notes");
-  };
-
-  let filterClick;
-
-  if (selectedOption === "Notes") {
-    filterClick = [props.myNotes];
-  }     
-
-  if (selectedOption === "Add") {
-    filterClick = [props.myNotes];
-  }
-
-  console.log(filterClick);
 
   return (
     <div className="cont-left-column">
@@ -40,10 +23,11 @@ export const LeftColumn = (props) => {
       {props.myNotes.map((note) => {
         return (
           <ContNotes
+            key={note.titulo}
+            id={note.id}
             title={note.titulo}
             parrafo={note.parrafo}
-            key={note.titulo}
-            onNotes={showNoteSelected}
+            onSelectNote={props.onSelectNote}
           />
         );
       })}
@@ -54,8 +38,10 @@ export const LeftColumn = (props) => {
 LeftColumn.propTypes = {
   myNotes: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,
       titulo: PropTypes.string.isRequired,
       parrafo: PropTypes.string.isRequired,
     })
   ),
+  onSelectNote: PropTypes.func,
 };

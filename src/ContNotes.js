@@ -13,7 +13,7 @@ export const ContNotes = (props) => {
   };
 
   const showTaskSelected = (event) => {
-    props.onNotes();
+    props.onSelectNote(props.id);
   };
 
   return (
@@ -27,6 +27,8 @@ export const ContNotes = (props) => {
 };
 
 ContNotes.propTypes = {
+  id: PropTypes.number,
   title: PropTypes.string,
   parrafo: PropTypes.string,
+  onSelectNote: PropTypes.func,
 };

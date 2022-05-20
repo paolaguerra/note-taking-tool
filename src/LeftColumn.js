@@ -7,6 +7,10 @@ import PropTypes from "prop-types";
 
 export const LeftColumn = (props) => {
 
+  const abrirInput = (event) => {
+    props.onOpen(event);
+  };
+
   return (
     <div className="cont-left-column">
       <div className="search-section">
@@ -18,7 +22,7 @@ export const LeftColumn = (props) => {
             type="text"
           ></input>
         </div>
-        <img className="add-img" alt="add-note" src={addnote}></img>
+        <img className="add-img" alt="add-note" src={addnote} onClick={abrirInput}></img>
       </div>
       {props.myNotes.map((note) => {
         return (
@@ -44,4 +48,5 @@ LeftColumn.propTypes = {
     })
   ),
   onSelectNote: PropTypes.func,
+  onOpen: PropTypes.func,
 };

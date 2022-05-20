@@ -8,7 +8,10 @@ import { ShowCompleteNote } from "./ShowCompleteNote";
 import PropTypes from "prop-types";
 
 export const RightColumn = (props) => {
-  console.log(props);
+
+  const borrar = () => {
+    props.onDelete(props.selectedNota.id);
+  };
 
   return (
     <div className="cont-right-column">
@@ -16,7 +19,7 @@ export const RightColumn = (props) => {
         <div className="options-bar">
           <div className="img-cont">
             <img className="heart-img" alt="heart" src={heart}></img>
-            <img className="trash-img" alt="trash" src={trash}></img>
+            <img className="trash-img" alt="trash" src={trash} onClick={borrar}></img>
             <img className="info-img" alt="info" src={info}></img>
           </div>
         </div>
@@ -45,4 +48,5 @@ RightColumn.propTypes = {
     parrafo: PropTypes.string,
     id: PropTypes.number,
   }),
+  onDelete: PropTypes.func.isRequired,
 };

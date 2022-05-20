@@ -31,12 +31,29 @@ export const Contenedor = (props) => {
     }
   };
 
-  console.log(selectedNote);
+  const openInput = () => {
+    setSelectedNote(null);
+  };
+
+  const deleteCard = (id) => {
+    const newArray = myNotes.filter((note) => {
+      return note.id !== id;
+    });
+    setMyNotes(newArray);
+  };
 
   return (
     <div className="mainCont">
-      <LeftColumn myNotes={myNotes} onSelectNote={handleSelectNote} />
-      <RightColumn onSave={handleSave} selectedNota={selectedNote}></RightColumn>
+      <LeftColumn
+        myNotes={myNotes}
+        onSelectNote={handleSelectNote}
+        onOpen={openInput}
+      />
+      <RightColumn
+        onSave={handleSave}
+        selectedNota={selectedNote}
+        onDelete={deleteCard}
+      ></RightColumn>
     </div>
   );
 };

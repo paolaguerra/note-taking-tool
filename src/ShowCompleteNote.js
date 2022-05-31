@@ -18,5 +18,4 @@ ShowCompleteNote.propTypes = {
     parrafo: PropTypes.string,
     id: PropTypes.number,
   }),
-  onOpen: PropTypes.func,
 };

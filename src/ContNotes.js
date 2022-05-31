@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 export const ContNotes = (props) => {
 
   const limitarTexto = (texto) => {
-    if (texto.length <= 200) {
+    if (texto.length <= 150) {
       return texto;
     } else {
-      return texto.substring(0, 200) ;
+      return texto.substring(0, 150) ;
     }
   };
 

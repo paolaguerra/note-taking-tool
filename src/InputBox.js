@@ -26,14 +26,21 @@ export const InputBox = (props) => {
     }
   };
 
+  const hoy = new Date();
+
+  function formatoFecha(fecha, formato) {}
+  formatoFecha(hoy, "dd/mm/yy");
+
   return (
     <div className="input">
+      <h1 className="h1-input">Add New Note</h1>
+      <div className="title-input">{hoy.toDateString()}</div>
       <input
         className="input-title"
         type="text"
         value={myTitle}
         onChange={cambiosDelTitle}
-        placeholder="Titulo"
+        placeholder="Title..."
         maxLength="40"
         required
       ></input>
@@ -41,10 +48,10 @@ export const InputBox = (props) => {
         className="input-description"
         value={myText}
         onChange={cambiosDelInput}
-        placeholder="Escribir..."
+        placeholder="Type..."
       ></textarea>
       <button onClick={guardarInfo} className="boton-guardar">
-        Guardar
+        Save
       </button>
     </div>
   );

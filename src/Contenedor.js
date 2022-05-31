@@ -40,6 +40,7 @@ export const Contenedor = (props) => {
       return note.id !== id;
     });
     setMyNotes(newArray);
+    setSelectedNote(null);
   };
 
   return (
